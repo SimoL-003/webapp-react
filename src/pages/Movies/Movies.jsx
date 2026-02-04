@@ -13,9 +13,10 @@ export default function MoviesPage() {
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/movies")
-      .then(
-        (res) => (setMovies(res.data.data), setFilteredMovies(res.data.data)),
-      )
+      .then((res) => {
+        setMovies(res.data.data);
+        setFilteredMovies(res.data.data);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -65,11 +66,7 @@ export default function MoviesPage() {
         />
 
         {/* CARD GRID */}
-        {filteredMovies.length > 0 ? (
-          <MoviesGrid movies={filteredMovies} loading={loading} />
-        ) : (
-          <h4 className="text-slate-700 font-semibold">No results</h4>
-        )}
+        <MoviesGrid movies={filteredMovies} loading={loading} />
       </div>
     </section>
   );
