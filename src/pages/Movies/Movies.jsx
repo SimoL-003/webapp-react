@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MoviesGrid from "./MoviesGrid";
 import axios from "axios";
+import SearchForm from "./SearchForm";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -8,6 +9,7 @@ export default function MoviesPage() {
   const [loading, setLoading] = useState(true);
   const [searchData, setSearchData] = useState("");
 
+  // Initial API call (all movies)
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/movies")
@@ -17,6 +19,7 @@ export default function MoviesPage() {
       .finally(() => setLoading(false));
   }, []);
 
+  // API call with search filter (on typing)
   useEffect(() => {
     if (!searchData) {
       setFilteredMovies(movies); /* FIXME perché segna erroreeee */
@@ -32,6 +35,7 @@ export default function MoviesPage() {
     return () => clearTimeout(timeout);
   }, [searchData]);
 
+  // API call with search filter (on submit)
   function handleSubmit(e) {
     e.preventDefault();
     axios
@@ -53,25 +57,12 @@ export default function MoviesPage() {
           </p>
         </section>
 
-        {/* Search form */}
-        <form onSubmit={handleSubmit} className="pb-6 flex items-center gap-2">
-          <label htmlFor="search" className="invisible absolute">
-            Search
-          </label>
-          <input
-            id="search"
-            type="text"
-            onChange={(e) => setSearchData(e.target.value)}
-            placeholder="Cerca un film..."
-            className="w-ful bg-white border border-slate-300 rounded-md px-3 py-2 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-          <button
-            type="submit"
-            className="px-4 py-2 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 transition"
-          >
-            Search
-          </button>
-        </form>
+        {/* SEARCH FORM */}
+        <SearchForm
+          handleSubmit={handleSubmit}
+          searchData={searchData}
+          setSearchData={setSearchData}
+        />
 
         {/* CARD GRID */}
         {filteredMovies.length > 0 ? (

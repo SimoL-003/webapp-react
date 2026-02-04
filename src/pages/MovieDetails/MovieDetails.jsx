@@ -17,8 +17,6 @@ export default function MovieDetailsPage() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  console.log(movie);
-
   return (
     <>
       <BackToPage />
