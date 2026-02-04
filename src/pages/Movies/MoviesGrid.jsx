@@ -14,8 +14,6 @@ export default function MoviesGrid() {
       .finally(() => setLoading(false));
   }, []);
 
-  console.log(movies);
-
   return (
     <>
       <section className="bg-white grid grid-cols-3 gap-4 items-center rounded-lg p-4">
