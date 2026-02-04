@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .container {
+    @apply w-[90%] md:w-[85%] max-w-7xl mx-auto;
+  }
+}
+
+nav .active {
+  @apply bg-slate-700 text-white rounded-md;
+}
