@@ -1,31 +1,13 @@
-import { NavLink } from "react-router-dom";
 import HeaderLogo from "../atoms/HeaderLogo";
+import Navbar from "../molecules/Navbar";
 
 export default function Header() {
-  const navLinks = [
-    { pageTitle: "Home", path: "/" },
-    { pageTitle: "Movies", path: "/movies" },
-  ];
-
   return (
     <header className="h-20 bg-slate-900 border-b border-s-slate-700">
       <div className="container flex justify-between items-center h-full">
         <HeaderLogo />
 
-        <nav className="text-slate-300">
-          <ul className="flex gap-6">
-            {navLinks.map((page) => (
-              <li
-                key={page.path}
-                className="hover:text-indigo-300 transition-colors"
-              >
-                <NavLink to={page.path} className="px-4 py-2 transition-all">
-                  {page.pageTitle}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <Navbar />
       </div>
     </header>
   );
