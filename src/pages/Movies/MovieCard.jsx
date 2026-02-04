@@ -3,7 +3,7 @@ export default function MovieCard({ movie }) {
     <div className="bg-white border border-slate-200 rounded-lg p-4 flex gap-4">
       {/* Poster */}
       <img
-        src={movie.image}
+        src={movie.image || "https://placehold.co/90x112?text=:-("}
         alt={movie.title}
         className="w-20 h-28 object-cover rounded-md"
       />
