@@ -11,7 +11,7 @@ export default function MovieCard({ movie }) {
       {/* Info */}
       <div className="flex flex-col justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-slate-800">
+          <h2 className="movie-title text-lg font-semibold text-slate-800">
             {movie.title}
           </h2>
           <p className="text-slate-600 text-sm">{movie.director}</p>

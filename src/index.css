@@ -9,3 +9,7 @@
 nav .active {
   @apply bg-slate-700 text-white rounded-md;
 }
+
+.card-link:hover .movie-title {
+  @apply underline;
+}
