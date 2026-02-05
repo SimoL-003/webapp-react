@@ -1,4 +1,4 @@
-import ReviewCard from "./ReviewCard";
+import ReviewCard from "../molecules/ReviewCard";
 
 export default function ReviewsSection({ reviews }) {
   return (
