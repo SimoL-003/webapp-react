@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import MoviesGrid from "./MoviesGrid";
+import MoviesGrid from "../components/organisms/MoviesGrid";
 import axios from "axios";
-import SearchForm from "./SearchForm";
+import SearchForm from "../components/molecules/SearchForm";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);

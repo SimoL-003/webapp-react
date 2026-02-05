@@ -1,5 +1,5 @@
-import MovieCard from "./MovieCard";
-import MovieCardSkeleton from "./MovieCardSkeleton";
+import MovieCard from "../molecules/MovieCard";
+import MovieCardSkeleton from "../atoms/MovieCardSkeleton";
 import { Link } from "react-router-dom";
 
 export default function MoviesGrid({ movies, loading }) {

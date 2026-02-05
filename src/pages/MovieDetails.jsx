@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ReviewsSection from "./ReviewsSection";
-import BackToPage from "./BackToPage";
+import ReviewsSection from "../components/organisms/ReviewsSection";
+import BackToPage from "../components/atoms/BackToPage";
 
 export default function MovieDetailsPage() {
   const { id } = useParams();
