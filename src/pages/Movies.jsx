@@ -29,7 +29,9 @@ export default function MoviesPage() {
 
     const timeout = setTimeout(() => {
       axios
-        .get(`http://localhost:3000/api/movies?search=${searchData}`)
+        .get(`http://localhost:3000/api/movies`, {
+          params: { search: searchData },
+        })
         .then((res) => setFilteredMovies(res.data.data));
     }, 500);
 
@@ -40,7 +42,9 @@ export default function MoviesPage() {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .get(`http://localhost:3000/api/movies?search=${searchData}`)
+      .get(`http://localhost:3000/api/movies`, {
+        params: { search: searchData },
+      })
       .then((res) => setFilteredMovies(res.data.data));
   }
 
