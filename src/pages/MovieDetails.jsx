@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ReviewsSection from "../components/organisms/ReviewsSection";
 import BackToPage from "../components/atoms/BackToPage";
 
 export default function MovieDetailsPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -14,6 +15,11 @@ export default function MovieDetailsPage() {
     axios
       .get(`http://localhost:3000/api/movies/${id}`)
       .then((res) => setMovie(res.data))
+      .catch((err) => {
+        if (err) {
+          navigate("/movies");
+        }
+      })
       .finally(() => setLoading(false));
   }, [id]);
 
