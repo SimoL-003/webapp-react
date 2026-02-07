@@ -11,7 +11,7 @@ export default function MoviesGrid({ movies, loading }) {
         ) : movies.length > 0 ? (
           movies.map((movie) => (
             <Link
-              to={`/movies/${movie.id}`}
+              to={`/movies/${movie.slug}`}
               key={movie.id}
               className="card-link hover:scale-105 transition-all"
             >

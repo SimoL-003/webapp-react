@@ -5,15 +5,14 @@ import ReviewsSection from "../components/organisms/ReviewsSection";
 import BackToPage from "../components/atoms/BackToPage";
 
 export default function MovieDetailsPage() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
-
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/movies/${id}`)
+      .get(`http://localhost:3000/api/movies/${slug}`)
       .then((res) => setMovie(res.data))
       .catch((err) => {
         if (err) {
@@ -21,7 +20,7 @@ export default function MovieDetailsPage() {
         }
       })
       .finally(() => setLoading(false));
-  }, [id]);
+  }, [slug]);
 
   return (
     <>
