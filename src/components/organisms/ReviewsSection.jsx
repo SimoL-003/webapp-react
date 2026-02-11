@@ -44,6 +44,7 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
         {/* ADD REVIEW */}
         <form
           onSubmit={handleSubmit}
+          onReset={() => setReviewData(initialReviewData)}
           className="max-w-lg mx-auto my-8 bg-white p-6 rounded-lg shadow-sm"
         >
           <h3 className="text-lg font-semibold text-slate-900 mb-4">
@@ -53,7 +54,7 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
           {/* Name */}
           <div className="mb-4">
             <label htmlFor="name" className="block text-sm text-slate-700 mb-1">
-              Name
+              Name*
             </label>
             <input
               type="text"
@@ -70,7 +71,7 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
           {/* Vote */}
           <div className="mb-4">
             <label htmlFor="vote" className="block text-sm text-slate-700 mb-1">
-              Vote
+              Vote* (1-5)
             </label>
             <input
               type="number"
@@ -100,13 +101,20 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
               rows={4}
             ></textarea>
           </div>
-
-          <button
-            type="submit"
-            className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 transition hover:cursor-pointer"
-          >
-            Confirm
-          </button>
+          <div className="flex gap-2 mt-4">
+            <button
+              type="submit"
+              className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 transition hover:cursor-pointer"
+            >
+              Confirm
+            </button>
+            <button
+              type="reset"
+              className="border border-slate-300 bg-white text-slate-700 px-4 py-2 rounded-md hover:bg-slate-100 hover:text-indigo-600 transition hover:cursor-pointer"
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </section>
