@@ -42,42 +42,69 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
         )}
 
         {/* ADD REVIEW */}
-        <form onSubmit={handleSubmit} className="w-1/2 mx-auto my-8">
-          <div className="flex gap-4 border p-2 mb-2">
-            <label htmlFor="name">Name</label>
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-lg mx-auto my-8 bg-white p-6 rounded-lg shadow-sm"
+        >
+          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+            Add a review
+          </h3>
+
+          {/* Name */}
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-sm text-slate-700 mb-1">
+              Name
+            </label>
             <input
               type="text"
               id="name"
               name="name"
+              placeholder="Your name"
               onChange={handleInputChange}
               value={reviewData.name}
-              className="border"
+              required
+              className="w-full border border-slate-300 rounded-md px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition resize-none"
             />
           </div>
-          <div className="flex gap-4 border p-2 mb-2">
-            <label htmlFor="vote">Vote</label>
+
+          {/* Vote */}
+          <div className="mb-4">
+            <label htmlFor="vote" className="block text-sm text-slate-700 mb-1">
+              Vote
+            </label>
             <input
               type="number"
               id="vote"
               name="vote"
               min={1}
               max={5}
+              required
               onChange={handleInputChange}
               value={reviewData.vote}
-              className="border"
+              className={`w-full border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition ${reviewData.vote === 0 ? "text-slate-400" : "text-slate-800"}`}
             />
           </div>
-          <div className="flex gap-4 border p-2 mb-2">
-            <label htmlFor="text">Text</label>
+
+          {/* Text */}
+          <div className="mb-4">
+            <label htmlFor="text" className="block text-sm text-slate-700 mb-1">
+              Text
+            </label>
             <textarea
               name="text"
               id="text"
               onChange={handleInputChange}
               value={reviewData.text}
-              className="border"
+              placeholder="Write your review..."
+              className="w-full border border-slate-300 rounded-md px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition resize-none"
+              rows={4}
             ></textarea>
           </div>
-          <button type="submit" className="border p-2 hover:cursor-pointer">
+
+          <button
+            type="submit"
+            className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 transition hover:cursor-pointer"
+          >
             Confirm
           </button>
         </form>
