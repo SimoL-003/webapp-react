@@ -1,6 +1,6 @@
 import ReviewsSection from "./ReviewsSection";
 
-export default function MovieDetailsContent({ movie }) {
+export default function MovieDetailsContent({ movie, getMovieData }) {
   return (
     <>
       <div className="container flex gap-10">
@@ -29,7 +29,11 @@ export default function MovieDetailsContent({ movie }) {
       </div>
 
       {/* REVIEWS SECTION*/}
-      <ReviewsSection reviews={movie.reviews} />
+      <ReviewsSection
+        reviews={movie.reviews}
+        movieId={movie.id}
+        getMovieData={getMovieData}
+      />
     </>
   );
 }

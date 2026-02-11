@@ -11,16 +11,20 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  function getMovieData() {
     axios
       .get(`http://localhost:3000/api/movies/${slug}`)
-      .then((res) => setMovie(res.data))
+      .then((res) => setMovie(res.data.data))
       .catch((err) => {
         if (err) {
           navigate("/movies");
         }
       })
       .finally(() => setLoading(false));
+  }
+
+  useEffect(() => {
+    getMovieData();
   }, [slug]);
 
   return (
@@ -31,7 +35,7 @@ export default function MovieDetailsPage() {
         {loading ? (
           <MovieDetailsSkeleton />
         ) : (
-          <MovieDetailsContent movie={movie} />
+          <MovieDetailsContent movie={movie} getMovieData={getMovieData} />
         )}
       </section>
     </>
