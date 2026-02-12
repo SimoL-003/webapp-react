@@ -6,7 +6,7 @@ export default function MovieDetailsContent({ movie, getMovieData }) {
       <div className="container flex gap-10">
         {/* Poster */}
         <img
-          src={movie.image}
+          src={movie.image || "https://placehold.co/320x400?text=:-("}
           alt={movie.title}
           className="w-80 h-auto rounded-lg shadow-md object-cover"
         />
