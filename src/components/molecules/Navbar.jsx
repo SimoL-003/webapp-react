@@ -4,6 +4,7 @@ export default function Navbar() {
   const navLinks = [
     { pageTitle: "Home", path: "/" },
     { pageTitle: "Movies", path: "/movies" },
+    { pageTitle: "Add Movie", path: "/new-movie" },
   ];
 
   return (

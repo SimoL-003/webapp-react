@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import MoviesPage from "./pages/Movies";
 import NotFound from "./pages/NotFound";
 import MovieDetailsPage from "./pages/MovieDetails";
+import AddMovie from "./pages/AddMovie";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
               <Route path="" element={<MoviesPage />} />
               <Route path="/movies/:slug" element={<MovieDetailsPage />} />
             </Route>
+            <Route path="/new-movie" element={<AddMovie />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
