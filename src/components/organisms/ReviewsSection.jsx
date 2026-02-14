@@ -5,7 +5,7 @@ import axios from "axios";
 export default function ReviewsSection({ reviews, movieId, getMovieData }) {
   const initialReviewData = {
     name: "",
-    vote: 0,
+    vote: "",
     text: "",
   };
   const [reviewData, setReviewData] = useState(initialReviewData);
@@ -81,7 +81,7 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
           {/* Vote */}
           <div className="mb-4">
             <label htmlFor="vote" className="block text-sm text-slate-700 mb-1">
-              Vote* (1-5)
+              Vote*
             </label>
             <input
               type="number"
@@ -89,6 +89,7 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
               name="vote"
               min={1}
               max={5}
+              placeholder="1 - 5"
               required
               onChange={handleInputChange}
               value={reviewData.vote}

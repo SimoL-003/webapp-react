@@ -8,7 +8,7 @@ export default function AddMovie() {
     title: "",
     director: "",
     genre: "",
-    release_year: 1900,
+    release_year: "",
     abstract: "",
   };
   const [movieData, setMovieData] = useState(initialMovieData);
@@ -153,6 +153,7 @@ export default function AddMovie() {
               type="number"
               min={1901}
               max={2151}
+              placeholder="1989"
               id="release_year"
               name="release_year"
               value={movieData.release_year}
