@@ -9,6 +9,7 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
     text: "",
   };
   const [reviewData, setReviewData] = useState(initialReviewData);
+  const [error, setError] = useState("");
 
   function handleInputChange(e) {
     const value = e.target.value;
@@ -23,6 +24,9 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
       .then((res) => {
         setReviewData(initialReviewData);
         getMovieData();
+      })
+      .catch((err) => {
+        setError(err.response.data.error);
       });
   }
 
@@ -50,6 +54,13 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
           <h3 className="text-lg font-semibold text-slate-900 mb-4">
             Add a review
           </h3>
+          {/* Error box */}
+          {error && (
+            <div className="mb-4 rounded-md border border-red-300 bg-red-50 px-4 py-3 text-red-700">
+              <h3 className="text-sm font-semibold inline">{error.code}.</h3>{" "}
+              <p className="text-sm leading-snug inline">{error.message}</p>
+            </div>
+          )}
 
           {/* Name */}
           <div className="mb-4">
@@ -67,7 +78,6 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
               className="w-full border border-slate-300 rounded-md px-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition resize-none"
             />
           </div>
-
           {/* Vote */}
           <div className="mb-4">
             <label htmlFor="vote" className="block text-sm text-slate-700 mb-1">
@@ -85,7 +95,6 @@ export default function ReviewsSection({ reviews, movieId, getMovieData }) {
               className={`w-full border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition ${reviewData.vote === 0 ? "text-slate-400" : "text-slate-800"}`}
             />
           </div>
-
           {/* Text */}
           <div className="mb-4">
             <label htmlFor="text" className="block text-sm text-slate-700 mb-1">

@@ -12,6 +12,7 @@ export default function AddMovie() {
     abstract: "",
   };
   const [movieData, setMovieData] = useState(initialMovieData);
+  const [error, setError] = useState("");
 
   function handleInputChange(e) {
     const key = e.target.name;
@@ -24,9 +25,15 @@ export default function AddMovie() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post("http://localhost:3000/api/movies", movieData).then((res) => {
-      (setMovieData(initialMovieData), navigate("/movies"));
-    });
+    axios
+      .post("http://localhost:3000/api/movies", movieData)
+      .then((res) => {
+        setMovieData(initialMovieData);
+        navigate("/movies");
+      })
+      .catch((err) => {
+        setError(err.response.data.error);
+      });
   }
 
   return (
@@ -40,6 +47,14 @@ export default function AddMovie() {
           <h1 className="text-2xl font-semibold text-slate-900 mb-6">
             Add new movie
           </h1>
+
+          {/* Error box */}
+          {error && (
+            <div className="mb-4 rounded-md border border-red-300 bg-red-50 px-4 py-3 text-red-700">
+              <h3 className="text-sm font-semibold inline">{error.code}.</h3>{" "}
+              <p className="text-sm leading-snug inline">{error.message}</p>
+            </div>
+          )}
 
           {/* Title */}
           <div className="mb-4">

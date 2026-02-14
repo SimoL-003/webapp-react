@@ -19,8 +19,10 @@ export default function MovieCard({ movie }) {
 
         <div className="flex flex-col gap-0.5 text-sm">
           <span className="text-slate-500">{movie.release_year}</span>
-          <span className="text-indigo-500 font-semibold">
-            ⭐ {movie.rating}
+          <span
+            className={`${movie.rating ? "text-indigo-500" : "text-slate-500"} font-semibold`}
+          >
+            ⭐ {movie.rating || "No review"}
           </span>
         </div>
       </div>
